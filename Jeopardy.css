@@ -1,0 +1,60 @@
+/* some colors you may find useful:
+  #115ff4
+  #060ce9
+  #28a200
+  #8d2ab5
+  #74119c
+*/
+body{
+  background-color: burlywood;
+}
+
+h1 {
+  text-align: center;
+}
+
+table {
+  background-color: black;
+}
+
+.cell {
+  background-color: #115ff4;
+  width: 150px;
+  height: 100px;
+  margin: 5px;
+  border: solid black;
+  border-width: 5px;
+  border-color: black;
+  padding: 2px;
+  text-align: center;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.category {
+font-size: 20px;
+}
+
+.clue {
+font-weight: bold;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+/* .question {
+  text-align: center;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+} */
+
+.question {
+  position: fixed;
+  text-align: center;
+  color: white;
+  border: 3px solid black;
+  background-color: #115ff4;
+  width: 400px;
+  height: 400px;
+  left: 36%;
+  /* z-index: 1; */
+}
