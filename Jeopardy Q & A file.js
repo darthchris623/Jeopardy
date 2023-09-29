@@ -53,7 +53,7 @@ const categories = [
         category: 'Art',
         clues: [
             { question: 'He painted the last supper of Jesus.', answer: 'Leonardo Da Vinci', showing: null },
-            { question: 'He painted the Sistine Chapel.', answer: 'Michaelangelo', showing: null },
+            { question: 'He painted the Sistine Chapel.', answer: 'Michelangelo', showing: null },
             { question: 'He painted the Starry Night.', answer: 'Vincent van Gogh', showing: null },
             { question: 'The Thinker was sculpted by this man.', answer: 'Auguste Rodin', showing: null },
             { question: 'He painted the Nymphéas, also known as the Water Lillies.', answer: 'Claude Monet', showing: null }
