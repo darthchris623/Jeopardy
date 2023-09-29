@@ -79,7 +79,7 @@ function handleClick(event) {
     // Used for retrieving question in the answerQuestion function
     //------------------------------------------
     const question = document.createElement('div'); // Creates the div for the selected question
-    question.classList = 'question' // Used for DOM selection
+    question.classList = 'question'; // Used for DOM selection
     question.setAttribute('answer', `${categories[c].clues[r].answer}`); // Used for retrieving answer in the answerQuestion function
     question.innerText = 'Answer: '; // Renders the question onto the div
     question.setAttribute('id', `${c}-${r}`); // Used for DOM selection in the answerQuestion function
