@@ -106,7 +106,7 @@ function answerQuestion() {
     // If answer is correct
     if (answerForm.value.toLowerCase() === answer.toLowerCase()) {
         document.body.querySelector('input[type=submit]').remove();
-        answerForm.remove()
+        answerForm.remove();
         questionForm.innerText = 'CORRECT';
         scoreBoard.innerText = parseFloat(scoreBoard.innerText) + parseFloat(value);
         // "CORRECT" message will display for 2 seconds, then disappear, then player can continue
@@ -123,7 +123,7 @@ function answerQuestion() {
     // If answer is wrong
     else {
         document.body.querySelector('input[type=submit]').remove();
-        answerForm.remove()
+        answerForm.remove();
         questionForm.innerText = 'INCORRECT';
         // "INCORRECT" message will display for 2 seconds, then disappear, then player can continue
         setTimeout(function () {
