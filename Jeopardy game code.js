@@ -31,15 +31,14 @@ function shuffleCategories(array) {
 
 // Start game button
 start.addEventListener('click', startGame);
-
+const shuffledCategories = shuffleCategories(categories); // Variable stores the return value of shuffleCategories
 function startGame() {
-    shuffleCategories(categories);
     const categoryRow = document.createElement('tr');
     // Sets the categories
-    for (let a = 0; a < categories.length; a++){
+    for (let a = 0; a < shuffledCategories.length; a++){
         const categoryCells = document.createElement('th');
         categoryCells.classList = 'cell category'
-        categoryCells.innerText = `${categories[a].category}`;
+        categoryCells.innerText = `${shuffledCategories[a].category}`;
         categoryRow.append(categoryCells);
         $('thead').append(categoryRow);
     };
@@ -54,8 +53,8 @@ function startGame() {
             cell.classList = 'cell clue'; // For CSS purposes
             row.append(cell);
             cell.setAttribute('id', `${b}-${a}`);
-            cell.setAttribute('question', `${categories[b].clues[a].question}`); // Sets the question in the HTML
-            cell.setAttribute('answer', `${categories[b].clues[a].answer}`); // Sets the answer in the HTML
+            cell.setAttribute('question', `${shuffledCategories[b].clues[a].question}`); // Sets the question in the HTML
+            cell.setAttribute('answer', `${shuffledCategories[b].clues[a].answer}`); // Sets the answer in the HTML
             cell.addEventListener('click', handleClick);
         };        
     };
