@@ -70,7 +70,7 @@ const categories = [
             { question: 'Real name Stefani Germanotta, she sang Bad Romance.', answer: 'Lady Gaga' },
             { question: 'Before defeating aliens, he was the Fresh Prince.', answer: 'Will Smith' },
             { question: 'She was supposed to play Blanche, but instead got the part of Rose in The Golden Girls.', answer: 'Betty White' },
-            { question: 'This sitcom featured a father and son running a junk business.', answer: 'Sandford And Son' },
+            { question: 'This sitcom featured a father and son running a junk business.', answer: 'Sanford And Son' },
             { question: 'This actor did the voice of both Darth Vader and The Lion King\'s< Mufasa', answer: 'James Earl Jones' }
         ]
     },
