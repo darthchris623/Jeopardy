@@ -25,7 +25,7 @@ function shuffleCategories(array) {
                 let temp = array[i].clues[counter];
                 array[i].clues[counter] = array[i].clues[index];
                 array[i].clues[index] = temp;
-                array[i].clues.slice(0, 5);
+                // array[i].clues.slice(0, 5);
             };
         }
     };
@@ -81,8 +81,8 @@ function handleClick(event) {
     // Used for retrieving question in the answerQuestion function
     //------------------------------------------
     const mainDiv = document.createElement('div'); // Creates the div for the selected question
-    const questionDiv = document.createElement('div'); // Creates subdiv for question text
     const answerDiv = document.createElement('div'); // Creates subdiv for answer form
+    const text = document.createElement('p');
     mainDiv.classList = 'question'; // Used for CSS
     mainDiv.setAttribute('answer', `${categories[c].clues[r].answer}`); // Used for retrieving answer in the answerQuestion function
     mainDiv.innerText = `${categories[c].clues[r].question}`; // Renders the question onto the div
@@ -97,10 +97,9 @@ function handleClick(event) {
     button.addEventListener('click', answerQuestion);
     answerDiv.append(answerForm);
     answerDiv.append(button);
-    mainDiv.append(questionDiv);
+    mainDiv.append(text);
     mainDiv.append(answerDiv);
     document.body.append(mainDiv);
-    
     removeEventListener('click', handleClick); 
 };
 
