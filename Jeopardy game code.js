@@ -16,22 +16,25 @@ function shuffleCategories(array) {
         array[index] = temp; //and now that new index number for U.S. history NOW equals 'temp'
     };
     // Shuffles the clues in the categories, same code as above
-    for (let i = 0; i < array[i].clues.length; i++){
-        let counter = array[i].clues.length;
-        while (counter > 0) {
-            let index = Math.floor(Math.random() * counter);
-            counter--;
-            let temp = array[i].clues[counter];
-            array[i].clues[counter] = array[i].clues[index];
-            array[i].clues[index] = temp; 
-        };
+    for (let i = 0; i < array.length; i++){
+        for (let j = 0; j < array[i].clues.length; j++){
+            let counter = array[i].clues.length;
+            while (counter > 0) {
+                let index = Math.floor(Math.random() * counter);
+                counter--;
+                let temp = array[i].clues[counter];
+                array[i].clues[counter] = array[i].clues[index];
+                array[i].clues[index] = temp;
+                array[i].clues.slice(0, 5);
+            };
+        }
     };
     return array.slice(0, 6); // Returns only 6 categories
 };
-
+const shuffledCategories = shuffleCategories(categories); // Variable stores the return value of shuffleCategories
 // Start game button
 start.addEventListener('click', startGame);
-const shuffledCategories = shuffleCategories(categories); // Variable stores the return value of shuffleCategories
+
 function startGame() {
     const categoryRow = document.createElement('tr');
     // Sets the categories
@@ -77,12 +80,14 @@ function handleClick(event) {
     let r = parseInt(coords[1]); // 4
     // Used for retrieving question in the answerQuestion function
     //------------------------------------------
-    const question = document.createElement('div'); // Creates the div for the selected question
-    question.classList = 'question'; // Used for DOM selection
-    question.setAttribute('answer', `${categories[c].clues[r].answer}`); // Used for retrieving answer in the answerQuestion function
-    question.innerText = 'Answer: '; // Renders the question onto the div
-    question.setAttribute('id', `${c}-${r}`); // Used for DOM selection in the answerQuestion function
-    question.setAttribute('value', clickedClue.innerText); // Used for setting score in the answer then the next line executes
+    const mainDiv = document.createElement('div'); // Creates the div for the selected question
+    const questionDiv = document.createElement('div'); // Creates subdiv for question text
+    const answerDiv = document.createElement('div'); // Creates subdiv for answer form
+    mainDiv.classList = 'question'; // Used for CSS
+    mainDiv.setAttribute('answer', `${categories[c].clues[r].answer}`); // Used for retrieving answer in the answerQuestion function
+    mainDiv.innerText = `${categories[c].clues[r].question}`; // Renders the question onto the div
+    mainDiv.setAttribute('id', `${c}-${r}`); // Used for DOM selection in the answerQuestion function
+    mainDiv.setAttribute('value', clickedClue.innerText); // Used for setting score in the answer then the next line executes
     clickedClue.innerText = `${categories[c].clues[r].question}`; // Renders the question to the clicked cell
     clickedClue.classList.remove('clue'); // Changes font size
     const answerForm = document.createElement('input'); // Creates a text input for the answer
@@ -90,15 +95,17 @@ function handleClick(event) {
     const button = document.createElement('input'); // Submit button for the answer
     button.setAttribute('type', 'submit');
     button.addEventListener('click', answerQuestion);
-    question.append(answerForm);
-    question.append(button);
-    document.body.append(question);
+    answerDiv.append(answerForm);
+    answerDiv.append(button);
+    mainDiv.append(questionDiv);
+    mainDiv.append(answerDiv);
+    document.body.append(mainDiv);
     
-    removeEventListener('click', handleClick);  
+    removeEventListener('click', handleClick); 
 };
 
 function answerQuestion() {
-    const questionForm = document.body.querySelector('div');
+    const questionForm = document.body.querySelector('.question');
     const answerForm = document.body.querySelector('input[type=text]');
     const answer = questionForm.getAttribute('answer');
     const value = questionForm.getAttribute('value');
@@ -106,6 +113,8 @@ function answerQuestion() {
     if (answerForm.value.toLowerCase() === answer.toLowerCase()) {
         document.body.querySelector('input[type=submit]').remove();
         answerForm.remove();
+        questionForm.style.backgroundColor = '#00bd1c';
+        questionForm.style.fontSize = '60px'
         questionForm.innerText = 'CORRECT';
         scoreBoard.innerText = parseFloat(scoreBoard.innerText) + parseFloat(value);
         // "CORRECT" message will display for 2 seconds, then disappear, then player can continue
@@ -123,7 +132,10 @@ function answerQuestion() {
     else {
         document.body.querySelector('input[type=submit]').remove();
         answerForm.remove();
+        questionForm.style.backgroundColor = '#b90b0b';
+        questionForm.style.fontSize = '60px'
         questionForm.innerText = 'INCORRECT';
+        scoreBoard.innerText = parseFloat(scoreBoard.innerText) - parseFloat(value);
         // "INCORRECT" message will display for 2 seconds, then disappear, then player can continue
         setTimeout(function () {
             // This code will restore the original table cell display
