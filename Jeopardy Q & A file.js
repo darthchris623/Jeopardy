@@ -71,7 +71,7 @@ const categories = [
             { question: 'Before defeating aliens, he was the Fresh Prince.', answer: 'Will Smith' },
             { question: 'She was supposed to play Blanche, but instead got the part of Rose in The Golden Girls.', answer: 'Betty White' },
             { question: 'This sitcom featured a father and son running a junk business.', answer: 'Sandford And Son' },
-            { question: 'This actor did the voice of both Darth Vader and The <i>Lion King\'s</i> Mufasa', answer: 'James Earl Jones' }
+            { question: 'This actor did the voice of both Darth Vader and The Lion King\'s< Mufasa', answer: 'James Earl Jones' }
         ]
     },
     {
