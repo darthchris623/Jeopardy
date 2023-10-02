@@ -101,7 +101,7 @@ const categories = [
             { question: 'Lewis Carrol wrote this story of a girl who falls through a rabbit hole.', answer: 'Alice In Wonderland' },
             { question: 'Rudyard Kipling wrote this story about a boy who grows up in the jungle.', answer: 'The Jungle Book' },
             { question: 'Louisa May Alcott wrote this novel in 1868 about 4 sisters growing up.', answer: 'Little Women' },
-            { question: 'Samuel Clemens is the real name of this Tom Saywer author.', answer: 'Mark Twain' }
+            { question: 'Samuel Clemens is the real name of this Tom Sawyer author.', answer: 'Mark Twain' }
         ]
     },
     {
