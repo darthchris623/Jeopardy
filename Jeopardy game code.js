@@ -52,7 +52,7 @@ function startGame() {
         for (let b = 0; b < 6; b++){
             const cell = document.createElement('td');
             const money = a + 1; 
-            cell.innerText = `${money * 100}`; // Sets the dollar amount for the cells
+            cell.innerText = `$${money * 100}`; // Sets the dollar amount for the cells
             cell.classList = 'cell clue'; // For CSS purposes
             row.append(cell);
             cell.setAttribute('id', `${b}-${a}`);
@@ -103,26 +103,27 @@ function handleClick(event) {
     removeEventListener('click', handleClick); 
 };
 
-function answerQuestion() {
+function answerQuestion(event) {
+    event.preventDefault();
     const questionForm = document.body.querySelector('.question');
-    const answerForm = document.body.querySelector('input[type=text]');
+    const answerInput = document.body.querySelector('input[type=text]');
     const text = document.body.querySelector('p');
     const answer = questionForm.getAttribute('answer');
-    const value = questionForm.getAttribute('value');
+    const value = questionForm.getAttribute('value').slice(1); // Removes the $ in order to calculate the score
     questionForm.append(text);
     // If answer is correct
-    if (answerForm.value.toLowerCase() === answer.toLowerCase()) {
+    if (answerInput.value.toLowerCase() === answer.toLowerCase()) {
         document.body.querySelector('input[type=submit]').remove();
-        answerForm.remove();
+        answerInput.remove();
         questionForm.style.backgroundColor = '#00bd1c';
         questionForm.style.fontSize = '60px'
         text.innerText = 'CORRECT';
-        scoreBoard.innerText = parseFloat(scoreBoard.innerText) + parseFloat(value);
+        scoreBoard.innerText = parseFloat(scoreBoard.innerText) + parseFloat(value); // Adds to the score
         // "CORRECT" message will display for 2 seconds, then disappear, then player can continue
         setTimeout(function () {
             let coords = questionForm.id.split('-'); // example [1, 4]
-            let c = parseInt(coords[0]); // 1
-            let r = parseInt(coords[1]); // 4
+            let c = parseInt(coords[0]); // 1 - "c" stands for column
+            let r = parseInt(coords[1]); // 4 - "r" stands for row
             document.getElementById(`${c}-${r}`).innerText = '';
             document.getElementById(`${c}-${r}`).removeEventListener('click', handleClick);
             questionForm.remove(); // Removes the answer div
@@ -132,17 +133,17 @@ function answerQuestion() {
     // If answer is wrong
     else {
         document.body.querySelector('input[type=submit]').remove();
-        answerForm.remove();
+        answerInput.remove();
         questionForm.style.backgroundColor = '#b90b0b';
         questionForm.style.fontSize = '60px'
         text.innerText = 'INCORRECT';
-        scoreBoard.innerText = parseFloat(scoreBoard.innerText) - parseFloat(value);
+        scoreBoard.innerText = parseFloat(scoreBoard.innerText) - parseFloat(value); // Subtracts from the score
         // "INCORRECT" message will display for 2 seconds, then disappear, then player can continue
         setTimeout(function () {
             // This code will restore the original table cell display
             let coords = questionForm.id.split('-'); // example [1, 4]
-            let c = parseInt(coords[0]); // 1
-            let r = parseInt(coords[1]); // 4
+            let c = parseInt(coords[0]); // 1 - "c" stands for column
+            let r = parseInt(coords[1]); // 4 - "r" stands for row
             document.getElementById(`${c}-${r}`).innerText = questionForm.getAttribute('value'); // Restores the score amount
             document.getElementById(`${c}-${r}`).classList = 'cell clue'; // For CSS purposes
             document.getElementById(`${c}-${r}`).addEventListener('click', handleClick); // Re-adds the event listener
