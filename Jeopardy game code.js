@@ -81,24 +81,24 @@ function handleClick(event) {
     // Used for retrieving question in the answerQuestion function
     //------------------------------------------
     const mainDiv = document.createElement('div'); // Creates the div for the selected question
-    const answerDiv = document.createElement('div'); // Creates subdiv for answer form
+    const answerForm = document.createElement('form'); // Creates subdiv for answer form
     const text = document.createElement('p');
     mainDiv.classList = 'question'; // Used for CSS
     mainDiv.setAttribute('answer', `${categories[c].clues[r].answer}`); // Used for retrieving answer in the answerQuestion function
-    mainDiv.innerText = `${categories[c].clues[r].question}`; // Renders the question onto the div
+    text.innerText = `${categories[c].clues[r].question}`; // Renders the question onto the div
     mainDiv.setAttribute('id', `${c}-${r}`); // Used for DOM selection in the answerQuestion function
     mainDiv.setAttribute('value', clickedClue.innerText); // Used for setting score in the answer then the next line executes
     clickedClue.innerText = `${categories[c].clues[r].question}`; // Renders the question to the clicked cell
     clickedClue.classList.remove('clue'); // Changes font size
-    const answerForm = document.createElement('input'); // Creates a text input for the answer
-    answerForm.setAttribute('type', 'text');
+    const answerInput = document.createElement('input'); // Creates a text input for the answer
+    answerInput.setAttribute('type', 'text');
     const button = document.createElement('input'); // Submit button for the answer
     button.setAttribute('type', 'submit');
     button.addEventListener('click', answerQuestion);
-    answerDiv.append(answerForm);
-    answerDiv.append(button);
+    answerForm.append(answerInput);
+    answerForm.append(button);
     mainDiv.append(text);
-    mainDiv.append(answerDiv);
+    mainDiv.append(answerForm);
     document.body.append(mainDiv);
     removeEventListener('click', handleClick); 
 };
@@ -106,15 +106,17 @@ function handleClick(event) {
 function answerQuestion() {
     const questionForm = document.body.querySelector('.question');
     const answerForm = document.body.querySelector('input[type=text]');
+    const text = document.body.querySelector('p');
     const answer = questionForm.getAttribute('answer');
     const value = questionForm.getAttribute('value');
+    questionForm.append(text);
     // If answer is correct
     if (answerForm.value.toLowerCase() === answer.toLowerCase()) {
         document.body.querySelector('input[type=submit]').remove();
         answerForm.remove();
         questionForm.style.backgroundColor = '#00bd1c';
         questionForm.style.fontSize = '60px'
-        questionForm.innerText = 'CORRECT';
+        text.innerText = 'CORRECT';
         scoreBoard.innerText = parseFloat(scoreBoard.innerText) + parseFloat(value);
         // "CORRECT" message will display for 2 seconds, then disappear, then player can continue
         setTimeout(function () {
@@ -133,7 +135,7 @@ function answerQuestion() {
         answerForm.remove();
         questionForm.style.backgroundColor = '#b90b0b';
         questionForm.style.fontSize = '60px'
-        questionForm.innerText = 'INCORRECT';
+        text.innerText = 'INCORRECT';
         scoreBoard.innerText = parseFloat(scoreBoard.innerText) - parseFloat(value);
         // "INCORRECT" message will display for 2 seconds, then disappear, then player can continue
         setTimeout(function () {
