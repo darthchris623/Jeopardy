@@ -118,9 +118,10 @@ function answerQuestion(event) {
         if (answerInput.value.toLowerCase() === answer[a].toLowerCase()) {
             answerForm.remove();
             questionDiv.style.backgroundColor = '#00bd1c';
-            questionDiv.style.fontSize = '60px'
+            questionDiv.style.fontSize = '60px';
             text.innerText = 'CORRECT';
-            scoreBoard.innerText = parseFloat(scoreBoard.innerText) + parseFloat(value); // Adds to the score
+            let score = parseFloat(scoreBoard.innerText.replace(/,/g, '')) + parseFloat(value); // Adds to the score and uses a comma separator
+            scoreBoard.innerText = score.toLocaleString();
             // // "CORRECT" message will display for 2 seconds, then disappear, then player can continue
             setTimeout(function () {
                 let coords = questionDiv.id.split('-'); // example [1, 4]
@@ -138,9 +139,10 @@ function answerQuestion(event) {
         else {
             answerForm.remove();
             questionDiv.style.backgroundColor = '#b90b0b';
-            questionDiv.style.fontSize = '60px'
+            questionDiv.style.fontSize = '60px';
             text.innerText = 'INCORRECT';
-            scoreBoard.innerText = parseFloat(scoreBoard.innerText) - parseFloat(value); // Subtracts from the score
+            let score = parseFloat(scoreBoard.innerText.replace(/,/g, '')) - parseFloat(value); // Subtracts from the score and uses a comma separator
+            scoreBoard.innerText = score.toLocaleString();
             // // "INCORRECT" message will display for 2 seconds, then disappear, then player can continue
             setTimeout(function () {
                 // This code will restore the original table cell display
