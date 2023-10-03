@@ -3,15 +3,15 @@ const categories = [
         category: 'Ancient Civilizations',
         clues: [
             { question: 'This city was founded in 750 B.C. by two brothers, Remus and Romulus.', answer: 'Rome' },
-            { question: 'Located in Mexico, this civilization made a calendar that ended in 2012.', answer: ['Mayan', 'Maya', 'The Mayans', 'The Maya' ] },
+            { question: 'Located in Mexico, this civilization made a calendar that ended in 2012.', answer: ['Mayan', 'Maya', 'Mayans', 'The Mayans', 'The Maya' ] },
             { question: 'This civilization invented the first writing system.', answer: ['Sumerian', 'The Sumerian', 'Sumerians', 'The Sumerians' ] },
             { question: 'Democracy comes from this civilization.', answer: ['Greek', 'Greeks', 'The Greek', 'The Greeks', 'Greece' ] },
-            { question: 'This civilization is known for making the first code of laws.', answer: ['Babylonian', 'The Babylonian', 'Babylonians', 'The Babylonians'] },
+            { question: 'This civilization is known for making the first code of laws.', answer: ['Babylonian', 'The Babylonian', 'Babylonians', 'The Babylonians', 'Babylon'] },
             { question: 'This civilization in Mexico had its capital in Tenochtitlan, modern-day Mexico City.', answer: ['Aztec', 'The Aztec', 'Aztecs', 'The Aztecs'] },
-            { question: 'The hieroglyphic writing system comes from this ancient civilization.', answer: 'Egyptian' },
+            { question: 'The hieroglyphic writing system comes from this ancient civilization.', answer: ['Egyptian', 'The Egyptian', 'Egyptians', 'The Egyptians', 'Egypt' ] },
             { question: 'The island of Crete was home to this civilzation during the Bronze Age, before the Greeks.', answer: ['Minoan', 'The Minoan', 'Minoans', 'The Minoans'] },
             { question: 'This civilization occupied Italy until it was conquered by the Romans in the late 4th century BC.', answer: ['Etruscan', 'The Etruscan', 'Etruscans', 'The Etruscans'] },
-            { question: 'This empire fell to the Spanish in 1572. Its capital was Cusco, Peru.', answer: ['Incan', 'The Incan', 'Incas', 'The Incas', 'Inca', 'The Inca' ] }
+            { question: 'This empire fell to the Spanish in 1572. Its capital was Cusco, Peru.', answer: ['Incan', 'The Incan', 'The Incans', 'Incas', 'The Incas', 'Inca', 'The Inca' ] }
         ]
     },
     {
