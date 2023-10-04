@@ -23,7 +23,7 @@ const categories = [
             { question: 'This territory was bought from Russia in 1867.', answer: 'Alaska' },
             { question: 'This city was the first capital of the U.S.', answer: 'Philadelphia' },
             { question: 'This settlement was the first successful colony in the New World.', answer: 'Jamestown' },
-            { question: 'This document was the start of the American Revolution.', answer: ['The Declaration Of Independence', 'Declaration Of Indepepndence' ] },
+            { question: 'This document was the start of the American Revolution.', answer: ['The Declaration Of Independence', 'Declaration Of Independence' ] },
             { question: 'The issue of slavery divided the nation and started this war.', answer: [ 'Civil War','The Civil War'] },
             { question: 'The purchase of this territory form the French in 1803 doubled the size of the U.S.', answer: 'Louisiana' },
             { question: 'This state gained its independence from Mexico in 1836, but didn\'t become a state until 1845.', answer: 'Texas' }
