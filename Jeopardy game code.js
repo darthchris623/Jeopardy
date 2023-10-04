@@ -113,15 +113,15 @@ function answerQuestion(event) {
     const answerInput = document.body.querySelector('input[type=text]');
     const value = questionDiv.getAttribute('value').slice(1); // Removes the $ in order to calculate the score
     questionDiv.append(text);
-    // If answer is correct
     for (let a = 0; a < answer.length; a++){ // Iterates over the array of possible answers
+            // If answer is correct
         if (answerInput.value.toLowerCase() === answer[a].toLowerCase()) {
             answerForm.remove();
             questionDiv.style.backgroundColor = '#00bd1c';
             questionDiv.style.fontSize = '60px';
             text.innerText = 'CORRECT';
             let score = parseFloat(scoreBoard.innerText.replace(/,/g, '')) + parseFloat(value); // Adds to the score and uses a comma separator
-            scoreBoard.innerText = score.toLocaleString();
+            scoreBoard.innerText = score.toLocaleString(); // Converts new score to a string
             // // "CORRECT" message will display for 2 seconds, then disappear, then player can continue
             setTimeout(function () {
                 let coords = questionDiv.id.split('-'); // example [1, 4]
@@ -141,8 +141,6 @@ function answerQuestion(event) {
             questionDiv.style.backgroundColor = '#b90b0b';
             questionDiv.style.fontSize = '60px';
             text.innerText = 'INCORRECT';
-            let score = parseFloat(scoreBoard.innerText.replace(/,/g, '')) - parseFloat(value); // Subtracts from the score and uses a comma separator
-            scoreBoard.innerText = score.toLocaleString();
             // // "INCORRECT" message will display for 2 seconds, then disappear, then player can continue
             setTimeout(function () {
                 // This code will restore the original table cell display
@@ -156,5 +154,8 @@ function answerQuestion(event) {
                 openClue = false;
             }, 2000);
         };
-    }
+    };
+    // Code must be outside of "FOR" loop otherwise the inner logic will subtract points
+    let score = parseFloat(scoreBoard.innerText.replace(/,/g, '')) - parseFloat(value); // Subtracts from the score and uses a comma separator
+    scoreBoard.innerText = score.toLocaleString(); // Converts new score to a string
 };
