@@ -1,5 +1,6 @@
-const start = document.querySelector('button');
-const gameBoard = document.getElementById('gameboard');
+const start = document.querySelector('button'); // DOM selector for start button
+const gameBoard = document.getElementById('gameboard'); // DOM selector for table
+const endButton = document.createElement('button'); // Button for endgng game at any time
 const scoreBoard = document.getElementById('score'); // Scoreboard DOM selector
 scoreBoard.innerText = 0; // Will be updated later as you get questions right
 
@@ -31,11 +32,19 @@ function shuffleCategories(array) {
     };
     return array.slice(0, 6); // Returns only 6 categories
 };
-const shuffledCategories = shuffleCategories(categories); // Variable stores the return value of shuffleCategories
+// End-game function for end-game button
+function endGame() {
+    $('thead').remove()
+    $('tbody').remove()
+    endButton.remove();
+    start.addEventListener('click', startGame);
+};
 // Start game button
 start.addEventListener('click', startGame);
-
 function startGame() {
+    const shuffledCategories = shuffleCategories(categories); // Variable stores the return value of shuffleCategories
+    const head = document.createElement('thead');
+    const body = document.createElement('tbody');
     const categoryRow = document.createElement('tr');
     // Sets the categories
     for (let a = 0; a < shuffledCategories.length; a++){
@@ -43,7 +52,7 @@ function startGame() {
         categoryCells.classList = 'cell category'
         categoryCells.innerText = `${shuffledCategories[a].category}`;
         categoryRow.append(categoryCells);
-        $('thead').append(categoryRow);
+        head.append(categoryRow);
     };
     // Set the questions and answers
     for (let a = 0; a < 5; a++){
@@ -61,7 +70,11 @@ function startGame() {
             cell.addEventListener('click', handleClick);
         };        
     };
+    gameBoard.append(head);
+    gameBoard.append(body);
     start.removeEventListener('click', startGame);
+    endButton.addEventListener('click', endGame);
+    document.body.append(endButton);
 };
 
 // Opens the clue and displays the question in a separate div.
