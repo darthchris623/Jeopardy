@@ -82,7 +82,7 @@ const categories = [
             { question: 'This Dutch artist painted the Starry Night in 1889.', answer: ['Van Gogh', 'Vincent van Gogh'] },
             { question: 'The Thinker was sculpted by this man.', answer: ['Rodin', 'Auguste Rodin'] },
             { question: 'He painted the Nymphéas, also known as the Water Lillies.', answer: ['Monet', 'Claude Monet'] },
-            { question: 'This Dutch artist painted The Night Watch in 1642', answer: 'Rembrandt' },
+            { question: 'This Dutch artist painted The Night Watch in 1642.', answer: 'Rembrandt' },
             { question: 'This Spanish artist painted Shirley Temple as a sphinx in 1939.', answer: ['Dali', 'Salvador Dali'] },
             { question: 'This French Impressionist artist painted many dances, including The Ballet Class in 1874.', answer: ['Degas', 'Edgar Degas'] },
             { question: 'In 1804, he sculpted a statue of Perseus holding the head of the Medusa.', answer: ['Canova', 'Antonio Canova'] },
