@@ -34,6 +34,12 @@ function shuffleCategories(array) {
 };
 // End-game function for end-game button
 function endGame() {
+    if (confirm('Are you sure you want to quit?')) {
+    }
+    // Keep playing
+    else {
+        return
+    }
     $('thead').remove()
     $('tbody').remove()
     endButton.remove();
