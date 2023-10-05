@@ -40,8 +40,9 @@ function endGame() {
     else {
         return
     }
-    $('thead').remove()
-    $('tbody').remove()
+    $('thead').remove();
+    $('tbody').remove();
+    scoreBoard.innerText = '0';
     endButton.remove();
     start.addEventListener('click', startGame);
 };
