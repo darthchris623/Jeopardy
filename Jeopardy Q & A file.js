@@ -49,12 +49,12 @@ const categories = [
         clues: [
             { question: 'This country has 11 time zones.', answer: 'Russia' },
             { question: 'This country has a canal that connects the Atlantic and Pacific oceans.', answer: 'Panama' },
-            { question: 'This asian country is made up of over 17,000 islands', answer: 'Indonesia' },
+            { question: 'This southeast asian country is made up of over 17,000 islands', answer: 'Indonesia' },
             { question: 'This country is completely situated between Russia and China.', answer: 'Mongolia' },
             { question: 'This African river is the longest in the world.', answer: ['Nile', 'The Nile'] },
             { question: 'What is the capital of France?', answer: 'Paris' },
-            { question: 'Addis Ababa is the capital of this country.', answer: 'Ethiopia' },
-            { question: 'Reykjavik is the capital of this country.', answer: 'Iceland' },
+            { question: 'Addis Ababa is the capital of this African country.', answer: 'Ethiopia' },
+            { question: 'Reykjavik is the capital of this European country.', answer: 'Iceland' },
             { question: 'This southeast asian country used to be called Burma.', answer: 'Myanmar' },
             { question: 'This country near India used to be called Ceylon.', answer: 'Sri Lanka' }
         ]
