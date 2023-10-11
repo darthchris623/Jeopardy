@@ -6,7 +6,7 @@ scoreBoard.innerText = 0; // Will be updated later as you get questions right
 
 /* This function shuffles both the categories and the clues in order to generate random distribution.
 This is based on an algorithm called Fisher Yates.*/
-function shuffleCategories(array) {
+function shuffle(array) {
     let counter = array.length;
     // While there are elements in the array
     while (counter > 0) {
@@ -16,19 +16,13 @@ function shuffleCategories(array) {
         array[counter] = array[index];//--> index NOW equals whatever the random number is
         array[index] = temp; //and now that new index number for U.S. history NOW equals 'temp'
     };
+    return array;
+};
+function shuffleCategories(array) {
+    shuffle(array);
     // Shuffles the clues in the categories, same code as above
-    for (let i = 0; i < array.length; i++){
-        for (let j = 0; j < array[i].clues.length; j++){
-            let counter = array[i].clues.length;
-            while (counter > 0) {
-                let index = Math.floor(Math.random() * counter);
-                counter--;
-                let temp = array[i].clues[counter];
-                array[i].clues[counter] = array[i].clues[index];
-                array[i].clues[index] = temp;
-                // array[i].clues.slice(0, 5);
-            };
-        }
+    for (let a = 0; a < array.length; a++){
+        shuffle(array[a].clues)
     };
     return array.slice(0, 6); // Returns only 6 categories
 };
@@ -53,6 +47,7 @@ function startGame() {
     const head = document.createElement('thead');
     const body = document.createElement('tbody');
     const categoryRow = document.createElement('tr');
+    endButton.innerText = 'Quit game';
     // Sets the categories
     for (let a = 0; a < shuffledCategories.length; a++){
         const categoryCells = document.createElement('th');
@@ -85,7 +80,6 @@ function startGame() {
 };
 
 // Opens the clue and displays the question in a separate div.
-
 let openClue = false;
 function handleClick(event) {
     if (openClue) { // prevents opening another clue before you answer the current one
@@ -140,9 +134,9 @@ function answerQuestion(event) {
             questionDiv.style.backgroundColor = '#00bd1c';
             questionDiv.style.fontSize = '60px';
             text.innerText = 'CORRECT';
-            let score = parseFloat(scoreBoard.innerText.replace(/,/g, '')) + parseFloat(value); // Adds to the score and uses a comma separator
+            let score = parseFloat(scoreBoard.innerText.replace(',', '')) + parseFloat(value); // Removes comma separator, parses strings to numbers, then adds them together
             scoreBoard.innerText = score.toLocaleString(); // Converts new score to a string
-            // // "CORRECT" message will display for 2 seconds, then disappear, then player can continue
+            // "CORRECT" message will display for 2 seconds, then disappear, then player can continue
             setTimeout(function () {
                 let coords = questionDiv.id.split('-'); // example [1, 4]
                 let c = parseInt(coords[0]); // 1 - "c" stands for column
@@ -161,7 +155,7 @@ function answerQuestion(event) {
             questionDiv.style.backgroundColor = '#b90b0b';
             questionDiv.style.fontSize = '60px';
             text.innerText = 'INCORRECT';
-            // // "INCORRECT" message will display for 2 seconds, then disappear, then player can continue
+            // "INCORRECT" message will display for 2 seconds, then disappear, then player can continue
             setTimeout(function () {
                 // This code will restore the original table cell display
                 let coords = questionDiv.id.split('-'); // example [1, 4]
@@ -176,6 +170,6 @@ function answerQuestion(event) {
         };
     };
     // Code must be outside of "FOR" loop otherwise the inner logic will subtract points
-    let score = parseFloat(scoreBoard.innerText.replace(/,/g, '')) - parseFloat(value); // Subtracts from the score and uses a comma separator
-    scoreBoard.innerText = score.toLocaleString(); // Converts new score to a string
+    let score = parseFloat(scoreBoard.innerText.replace(',', '')) - parseFloat(value); // Removes comma separator, parses strings to numbers, then subtracts
+    scoreBoard.innerText = score.toLocaleString();  // Converts new score to a string with comma separator
 };
