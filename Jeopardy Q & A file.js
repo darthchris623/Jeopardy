@@ -127,7 +127,7 @@ const categories = [
             { question: 'This potion will allow you to transform into someone else.', answer: 'Polyjuice potion' },
             { question: 'This boy at school is Harry\'s rival.', answer: 'Draco Malfoy' },
             { question: 'Harry, along with the other students, gets his wand from this store.', answer: 'Olivander\'s' },
-            { question: 'The elder wand, the resurrection stone, and the invisibility cloak are refferrd to as these.', answer: 'The Deathly Hallows' },
+            { question: 'The elder wand, the resurrection stone, and the invisibility cloak are referred to as these.', answer: 'The Deathly Hallows' },
             { question: 'He is the gamekeeper for Hogwarts', answer: 'Hagrid' },
             { question: 'The Chamber Of Secrets was the home of this beast.', answer: ['Basilisk', 'The basilisk'] },
             { question: 'This man was Harry\'s godfather, as well as his father\'s close friend.', answer: 'Sirius Black' },
