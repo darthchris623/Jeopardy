@@ -3,7 +3,6 @@ const gameBoard = document.getElementById('gameboard'); // DOM selector for tabl
 const endButton = document.createElement('button'); // Button for endgng game at any time
 const scoreBoard = document.getElementById('score'); // Scoreboard DOM selector
 scoreBoard.innerText = 0; // Will be updated later as you get questions right
-
 /* This function shuffles both the categories and the clues in order to generate random distribution.
 This is based on an algorithm called Fisher Yates.*/
 function shuffle(array) {
@@ -48,7 +47,8 @@ function startGame() {
     const body = document.createElement('tbody');
     const categoryRow = document.createElement('tr');
     endButton.innerText = 'Quit game';
-    // Sets the categories
+    // Two separate loops build the table head and the table body
+    // Fisrt loop sets the categories in the head
     for (let a = 0; a < shuffledCategories.length; a++){
         const categoryCells = document.createElement('th');
         categoryCells.classList = 'cell category'
@@ -78,7 +78,6 @@ function startGame() {
     endButton.addEventListener('click', endGame);
     document.body.append(endButton);
 };
-
 // Opens the clue and displays the question in a separate div.
 let openClue = false;
 function handleClick(event) {
@@ -106,6 +105,7 @@ function handleClick(event) {
     clickedClue.classList.remove('clue'); // Changes font size
     const answerInput = document.createElement('input'); // Creates a text input for the answer
     answerInput.setAttribute('type', 'text');
+    answerInput.setAttribute('required', '');
     const button = document.createElement('input'); // Submit button for the answer
     button.setAttribute('type', 'submit');
     button.addEventListener('click', answerQuestion);
@@ -116,9 +116,7 @@ function handleClick(event) {
     document.body.append(mainDiv);
     removeEventListener('click', handleClick); 
 };
-
 function answerQuestion(event) {
-    event.preventDefault();
     const questionDiv = document.body.querySelector('.question');
     const answerForm = document.body.querySelector('form');
     const text = document.body.querySelector('p');
@@ -126,6 +124,10 @@ function answerQuestion(event) {
     const answer = questionDiv.getAttribute('answer').split(',');
     const answerInput = document.body.querySelector('input[type=text]');
     const value = questionDiv.getAttribute('value').slice(1); // Removes the $ in order to calculate the score
+    if (answerInput.value === '') { // Triggers HTML "required" alert if answer input is blank
+        return;
+    }
+    event.preventDefault(); // Must be placed after "if" statement, otherwise HTML "required" alert will not show up
     questionDiv.append(text);
     for (let a = 0; a < answer.length; a++){ // Iterates over the array of possible answers
             // If answer is correct
