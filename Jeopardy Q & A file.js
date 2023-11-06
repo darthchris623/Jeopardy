@@ -107,7 +107,7 @@ const categories = [
     {
         category: 'Chemistry',
         clues: [
-            { question: 'Two atoms of oxygen and one atom of hydrogen make this molecule.', answer: 'Water' },
+            { question: 'Two atoms of hydrogen and one atom of oxygen make this molecule.', answer: 'Water' },
             { question: 'One atom of carbon and two atoms of oxygen make this molecule.', answer: 'Carbon dioxide' },
             { question: 'Protons and neutrons make up the nucleus, while these orbit the nucleus.', answer: 'Electrons' },
             { question: 'An atom that can have a varying number of neutrons is called this.', answer: 'Isotope' },
