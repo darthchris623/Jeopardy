@@ -77,7 +77,7 @@ const categories = [
     {
         category: 'Art',
         clues: [
-            { question: 'In 1498 this scientist, engineer, architecht, and artist painted the last supper of Jesus.', answer: ['Leonardo Da Vinci', 'Leonardo', 'Da Vinci' ] },
+            { question: 'In 1498 this scientist, engineer, architect, and artist painted the last supper of Jesus.', answer: ['Leonardo Da Vinci', 'Leonardo', 'Da Vinci' ] },
             { question: 'Starting in 1508 it took this Italian artist 4 years to paint the Sistine Chapel.', answer: ['Michelangelo', 'Michelangelo Buonarotti'] },
             { question: 'This Dutch artist painted the Starry Night in 1889.', answer: ['Van Gogh', 'Vincent van Gogh'] },
             { question: 'The Thinker was sculpted by this man.', answer: ['Rodin', 'Auguste Rodin'] },
