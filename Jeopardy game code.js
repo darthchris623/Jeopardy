@@ -1,6 +1,6 @@
 const start = document.querySelector('button'); // DOM selector for start button
 const gameBoard = document.getElementById('gameboard'); // DOM selector for table
-const endButton = document.createElement('button'); // Button for endgng game at any time
+const endButton = document.createElement('button'); // Button for ending game at any time
 const scoreBoard = document.getElementById('score'); // Scoreboard DOM selector
 scoreBoard.innerText = 0; // Will be updated later as you get questions right
 /* This function shuffles both the categories and the clues in order to generate random distribution.
